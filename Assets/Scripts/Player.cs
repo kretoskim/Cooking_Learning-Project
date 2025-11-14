@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;   //EventHandler<> EventArgs live here
 
 public class Player : MonoBehaviour
 {
@@ -69,6 +70,7 @@ public class Player : MonoBehaviour
             {
                 SetSelectedCounter(null); 
             }
+        //Debug.Log(selectedCounter);    
     }
     private void HandleMovement()
     {

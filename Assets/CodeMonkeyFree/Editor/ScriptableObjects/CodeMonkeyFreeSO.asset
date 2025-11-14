@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentVersion: 1.01
   subtype: kitchenchaos
-  lastShownTimestamp: 1763022299
+  lastShownTimestamp: 1763109556
   lastUpdateResponse:
     version: 1.01
     versionUrl: https://unitycodemonkey.com
-  checkedLastUpdateTimestamp: 1763022299
+  checkedLastUpdateTimestamp: 1763109557
   lastQOTDResponse:
     questionId: 241
     questionText: 'What is the result of this code:
@@ -32,18 +32,18 @@ MonoBehaviour:
     answerC: money == 0
     answerD: 
     answerE: 
-  lastQotdTimestamp: 1763022299
+  lastQotdTimestamp: 1763109557
   lastDynamicHeaderResponse:
     topImageUrl: https://codemonkeyexternal.blob.core.windows.net/external/Misc/cmBlackFriday2025.png
     topText: Get my BLACK FRIDAY Bundle! Available now with Live Chat!
     topLink: blackfriday
     bottomText: My 10+ Years of C# Knowledge in 1 Course!
     bottomLink: csharpcourse
-  lastDynamicHeaderTimestamp: 1763022299
+  lastDynamicHeaderTimestamp: 1763109557
   websiteLatestMessage:
     text: <a href="https://cmonkey.co/freecourses">Check out all my FREE courses!
       Click here!</a>
-  websiteLatestMessageTimestamp: 1763022299
+  websiteLatestMessageTimestamp: 1763109557
   websiteLatestVideos:
     videos:
     - youTubeId: zbGWwfEhTzc
@@ -54,4 +54,4 @@ MonoBehaviour:
       title: Dispelling the Unity looks bad MYTH!
     - youTubeId: 0zljaBBiOXo
       title: Unity turns 20! Get FREE Assets and Make Games!
-  websiteLatestVideosTimestamp: 1763022299
+  websiteLatestVideosTimestamp: 1763109557

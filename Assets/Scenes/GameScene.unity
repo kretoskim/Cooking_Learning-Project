@@ -833,7 +833,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5383042374367095527, guid: 06060e22ade1e364593f645cd40d2c56, type: 3}
       propertyPath: testing
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5383042374367095527, guid: 06060e22ade1e364593f645cd40d2c56, type: 3}
       propertyPath: tomatoPrefab

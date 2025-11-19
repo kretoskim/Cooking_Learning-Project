@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 112454576116011304, guid: 1baf565b786b4764980d661144bc8390, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.25
+      objectReference: {fileID: 0}
     - target: {fileID: 706807212073844969, guid: 1baf565b786b4764980d661144bc8390, type: 3}
       propertyPath: m_Name
       value: ClearCounter
@@ -88,8 +92,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5de0098da6937214bbe6bcf65f354bfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kitchenObjectSO: {fileID: 11400000, guid: ff72a4a22fcf97d488bbb0ea141f826d, type: 2}
   counterTopPoint: {fileID: 5197189279436951878}
+  kitchenObjectSO: {fileID: 11400000, guid: ff72a4a22fcf97d488bbb0ea141f826d, type: 2}
 --- !u!4 &5197189279436951878 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 112454576116011304, guid: 1baf565b786b4764980d661144bc8390, type: 3}

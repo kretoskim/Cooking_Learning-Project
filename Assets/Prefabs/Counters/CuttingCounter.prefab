@@ -88,7 +88,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   counterTopPoint: {fileID: 3246489144908982973}
-  cutKitchenObjectSO: {fileID: 11400000, guid: b63f7c54eaa3394469ea4dd31af06eac, type: 2}
+  cutKitchenObjectSOArray:
+  - {fileID: 11400000, guid: 5e2205f9e7407b446bd99baf218cbf3c, type: 2}
+  - {fileID: 11400000, guid: b7994eb84431b764491e48ce6f696e0c, type: 2}
+  - {fileID: 11400000, guid: 39095a9cc931e1c48b0785f9043780ee, type: 2}
 --- !u!4 &3246489144908982973 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 112454576116011304, guid: 1baf565b786b4764980d661144bc8390, type: 3}

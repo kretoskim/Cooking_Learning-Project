@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentVersion: 1.01
   subtype: kitchenchaos
-  lastShownTimestamp: 1764066765
+  lastShownTimestamp: 1764158133
   lastUpdateResponse:
     version: 1.01
     versionUrl: https://unitycodemonkey.com
-  checkedLastUpdateTimestamp: 1764066765
+  checkedLastUpdateTimestamp: 1764158134
   lastQOTDResponse:
     questionId: 245
     questionText: 'Does this variable get reset when you load a different Scene?
@@ -30,18 +30,18 @@ MonoBehaviour:
     answerC: Only when loading the Main Menu
     answerD: 
     answerE: 
-  lastQotdTimestamp: 1764066765
+  lastQotdTimestamp: 1764158134
   lastDynamicHeaderResponse:
     topImageUrl: https://codemonkeyexternal.blob.core.windows.net/external/Misc/cmBlackFriday2025.png
     topText: Get my BLACK FRIDAY Bundle! Available now with Live Chat!
     topLink: blackfriday
     bottomText: My 10+ Years of C# Knowledge in 1 Course!
     bottomLink: csharpcourse
-  lastDynamicHeaderTimestamp: 1764066765
+  lastDynamicHeaderTimestamp: 1764158134
   websiteLatestMessage:
     text: <a href="https://cmonkey.co/freecourses">Check out all my FREE courses!
       Click here!</a>
-  websiteLatestMessageTimestamp: 1764066765
+  websiteLatestMessageTimestamp: 1764158134
   websiteLatestVideos:
     videos:
     - youTubeId: Z_R-gcTuMrI
@@ -52,4 +52,4 @@ MonoBehaviour:
       title: Unity INSIDE Unreal Engine?! WHAT IS GOING ON?!
     - youTubeId: vB0ApsVWET8
       title: The BIGGEST Unity Sale of the YEAR! (BLACK FRIDAY 95% OFF!)
-  websiteLatestVideosTimestamp: 1764066765
+  websiteLatestVideosTimestamp: 1764158134

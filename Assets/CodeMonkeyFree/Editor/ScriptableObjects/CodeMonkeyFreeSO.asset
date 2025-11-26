@@ -14,39 +14,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentVersion: 1.01
   subtype: kitchenchaos
-  lastShownTimestamp: 1763980039
+  lastShownTimestamp: 1764066765
   lastUpdateResponse:
     version: 1.01
     versionUrl: https://unitycodemonkey.com
-  checkedLastUpdateTimestamp: 1763980039
+  checkedLastUpdateTimestamp: 1764066765
   lastQOTDResponse:
-    questionId: 244
-    questionText: What will happen on January 19, 2038 at 03:14:07?
-    answerA: Armagedon
-    answerB: End of Unix Time
-    answerC: Half-Life 3 release date
+    questionId: 245
+    questionText: 'Does this variable get reset when you load a different Scene?
+
+      <p>private
+      static int score;</p>'
+    answerA: Yes
+    answerB: No
+    answerC: Only when loading the Main Menu
     answerD: 
     answerE: 
-  lastQotdTimestamp: 1763980039
+  lastQotdTimestamp: 1764066765
   lastDynamicHeaderResponse:
     topImageUrl: https://codemonkeyexternal.blob.core.windows.net/external/Misc/cmBlackFriday2025.png
     topText: Get my BLACK FRIDAY Bundle! Available now with Live Chat!
     topLink: blackfriday
     bottomText: My 10+ Years of C# Knowledge in 1 Course!
     bottomLink: csharpcourse
-  lastDynamicHeaderTimestamp: 1763980039
+  lastDynamicHeaderTimestamp: 1764066765
   websiteLatestMessage:
     text: <a href="https://cmonkey.co/freecourses">Check out all my FREE courses!
       Click here!</a>
-  websiteLatestMessageTimestamp: 1763980039
+  websiteLatestMessageTimestamp: 1764066765
   websiteLatestVideos:
     videos:
+    - youTubeId: Z_R-gcTuMrI
+      title: TOP 10 NEW Games, Made with Unity! (OCTOBER 2025)
     - youTubeId: yC6IGLB4ySg
       title: Make Games FASTER (90% Compilation Speed BOOST!)
     - youTubeId: 6JDErIMOUjM
       title: Unity INSIDE Unreal Engine?! WHAT IS GOING ON?!
     - youTubeId: vB0ApsVWET8
       title: The BIGGEST Unity Sale of the YEAR! (BLACK FRIDAY 95% OFF!)
-    - youTubeId: abYJvA6IchM
-      title: Avoid these Beginner C# MISTAKES! (Code Review)
-  websiteLatestVideosTimestamp: 1763980039
+  websiteLatestVideosTimestamp: 1764066765

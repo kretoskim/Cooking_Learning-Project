@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections.Generic;
+using System.Collections;
 
 public class ClearCounter : BaseCounter
 {
@@ -24,6 +26,16 @@ public class ClearCounter : BaseCounter
            if(player.HasKitchenObject())
             {
                 //Player is carrying something
+                if(player.GetKitchenObject() is PlateKitchenObject)
+                {
+                    //Player is holding a Plate
+                    PlateKitchenObject plateKitchenObject = player.GetKitchenObject() as PlateKitchenObject;
+                    if(plateKitchenObject.TryAddIgredient(GetKitchenObject().GetKitchenObjectSO()))
+                    {
+                        GetKitchenObject().DestroySelf();
+                    }
+                    
+                }
             }
             else
             {

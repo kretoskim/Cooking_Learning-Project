@@ -26,7 +26,7 @@ public class PlatesCounterVisual : MonoBehaviour
         Destroy(plateGameObject);
     }
 
-    private void PlatesCounter_OnPlateSpawned(object sender, System.EventArgs e)
+    private void PlatesCounter_OnPlateSpawned(object sender, EventArgs e)
     {
         Transform plateVisualTransform = Instantiate(plateVisualPrefab, counterTopPoint);
 

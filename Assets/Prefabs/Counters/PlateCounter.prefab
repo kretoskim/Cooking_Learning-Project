@@ -64,7 +64,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 706807212073844969, guid: 1baf565b786b4764980d661144bc8390, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3347904138845127405}
+      addedObject: {fileID: 4733172124607790210}
   m_SourcePrefab: {fileID: 100100000, guid: 1baf565b786b4764980d661144bc8390, type: 3}
 --- !u!4 &3805354690044552689 stripped
 Transform:
@@ -76,7 +76,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 706807212073844969, guid: 1baf565b786b4764980d661144bc8390, type: 3}
   m_PrefabInstance: {fileID: 3837296931818435801}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3347904138845127405
+--- !u!114 &4733172124607790210
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7d1144ec33b3dd40a30af9a40357308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platesCounter: {fileID: 3347904138845127405}
+  platesCounter: {fileID: 4733172124607790210}
   counterTopPoint: {fileID: 3805354690044552689}
   plateVisualPrefab: {fileID: 4457476424246027135, guid: 8fb5f5a5c3e15c742b523597afa30357, type: 3}
 --- !u!1001 &6350061996519833070
@@ -196,6 +196,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 1a0afd856a35421469b28b916116fd9c, type: 2}
+    - target: {fileID: 4472461010448373620, guid: e21b499d164095947b7559f0267f0e63, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4589716710238282922, guid: e21b499d164095947b7559f0267f0e63, type: 3}
       propertyPath: m_Name
       value: Selected
@@ -286,7 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c5121bd37bae284cbd8ab9f7bdbb2e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseCounter: {fileID: 3347904138845127405}
+  baseCounter: {fileID: 4733172124607790210}
   visualGameObjectArray:
   - {fileID: 7354004538531703450}
 --- !u!4 &7470909631542909253 stripped

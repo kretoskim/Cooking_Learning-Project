@@ -24,6 +24,9 @@ public class KitchenObject : MonoBehaviour
 
         transform.parent = kitchenObjectParent.GetKitchenObjectFollowTransform();
         transform.localPosition = Vector3.zero;
+
+        gameObject.SetActive(true);
+      //Debug.Log($"Picked up {kitchenObjectSO.objectName} - Visible: {gameObject.activeInHierarchy}");
     }
     public IKitchenObjectParent GetKitchenObjectParent()
     {
@@ -35,6 +38,20 @@ public class KitchenObject : MonoBehaviour
 
         Destroy(gameObject);
     }
+
+    public bool TryGetPlate(out PlateKitchenObject plateKitchenObject)
+    {
+        if(this is PlateKitchenObject)
+        {
+            plateKitchenObject = this as PlateKitchenObject;
+            return true;
+        }
+        else
+        {
+            plateKitchenObject = null;
+            return false;
+        }
+    } 
     public static KitchenObject SpawnKitchenObject(KitchenObjectSO kitchenObjectSO, IKitchenObjectParent kitchenObjectParent)
     {
         Transform kitchenObjectTransform = Instantiate(kitchenObjectSO.prefab);  

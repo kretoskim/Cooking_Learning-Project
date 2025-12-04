@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentVersion: 1.01
   subtype: kitchenchaos
-  lastShownTimestamp: 1764669360
+  lastShownTimestamp: 1764792398
   lastUpdateResponse:
     version: 1.01
     versionUrl: https://unitycodemonkey.com
-  checkedLastUpdateTimestamp: 1764669360
+  checkedLastUpdateTimestamp: 1764792398
   lastQOTDResponse:
     questionId: 247
     questionText: 'If I do:
@@ -32,18 +32,18 @@ MonoBehaviour:
     answerC: 
     answerD: 
     answerE: 
-  lastQotdTimestamp: 1764669360
+  lastQotdTimestamp: 1764792398
   lastDynamicHeaderResponse:
     topImageUrl: https://codemonkeyexternal.blob.core.windows.net/external/Misc/cmBlackFriday2025.png
     topText: Get my BLACK FRIDAY Bundle! Available now with Live Chat!
     topLink: blackfriday
     bottomText: My 10+ Years of C# Knowledge in 1 Course!
     bottomLink: csharpcourse
-  lastDynamicHeaderTimestamp: 1764669360
+  lastDynamicHeaderTimestamp: 1764792398
   websiteLatestMessage:
     text: <a href="https://cmonkey.co/freecourses">Check out all my FREE courses!
       Click here!</a>
-  websiteLatestMessageTimestamp: 1764669360
+  websiteLatestMessageTimestamp: 1764792398
   websiteLatestVideos:
     videos:
     - youTubeId: 2AG3POM9wOs
@@ -54,4 +54,4 @@ MonoBehaviour:
       title: The FUTURE of Unity! (and Unity 7 is DEAD!)
     - youTubeId: Z_R-gcTuMrI
       title: TOP 10 NEW Games, Made with Unity! (OCTOBER 2025)
-  websiteLatestVideosTimestamp: 1764669360
+  websiteLatestVideosTimestamp: 1764792398

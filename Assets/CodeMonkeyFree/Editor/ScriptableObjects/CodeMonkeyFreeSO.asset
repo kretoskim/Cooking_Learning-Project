@@ -14,44 +14,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentVersion: 1.01
   subtype: kitchenchaos
-  lastShownTimestamp: 1764792398
+  lastShownTimestamp: 1765090869
   lastUpdateResponse:
     version: 1.01
     versionUrl: https://unitycodemonkey.com
-  checkedLastUpdateTimestamp: 1764792398
+  checkedLastUpdateTimestamp: 1765090869
   lastQOTDResponse:
-    questionId: 247
-    questionText: 'If I do:
+    questionId: 249
+    questionText: 'Is this valid code?
 
-      <p>Instantiate(myPrefab, Input.mousePosition,
-      Quaternion.identity);</p>
-
-      <p>Will myPrefab be spawned under the mouse?</p>'
+      <p>Color? myColor = null;</p>'
     answerA: Yes
-    answerB: No
+    answerB: No, myColor is a struct and cannot be null
     answerC: 
     answerD: 
     answerE: 
-  lastQotdTimestamp: 1764792398
+  lastQotdTimestamp: 1765090869
   lastDynamicHeaderResponse:
-    topImageUrl: https://codemonkeyexternal.blob.core.windows.net/external/Misc/cmBlackFriday2025.png
-    topText: Get my BLACK FRIDAY Bundle! Available now with Live Chat!
-    topLink: blackfriday
+    topImageUrl: https://codemonkeyexternal.blob.core.windows.net/external/Misc/unityBlackFridayAssetStoreDec25.png
+    topText: Unity Asset Store is still having their BLACK FRIDAY deals!
+    topLink: unityassetstore
     bottomText: My 10+ Years of C# Knowledge in 1 Course!
     bottomLink: csharpcourse
-  lastDynamicHeaderTimestamp: 1764792398
+  lastDynamicHeaderTimestamp: 1765090869
   websiteLatestMessage:
     text: <a href="https://cmonkey.co/freecourses">Check out all my FREE courses!
       Click here!</a>
-  websiteLatestMessageTimestamp: 1764792398
+  websiteLatestMessageTimestamp: 1765090869
   websiteLatestVideos:
     videos:
+    - youTubeId: wAI7TNtW7xM
+      title: How MUCH is your Time WORTH?
+    - youTubeId: c4tyM-o2uJQ
+      title: Make your Console 10X BETTER with this Tool! (50% OFF!)
     - youTubeId: 2AG3POM9wOs
       title: What are Unity Building Blocks?
     - youTubeId: uYkVz724eng
       title: TOP 10 NEW Tools AND Visuals NOVEMBER 2025!
-    - youTubeId: UzddfPG2zr4
-      title: The FUTURE of Unity! (and Unity 7 is DEAD!)
-    - youTubeId: Z_R-gcTuMrI
-      title: TOP 10 NEW Games, Made with Unity! (OCTOBER 2025)
-  websiteLatestVideosTimestamp: 1764792398
+  websiteLatestVideosTimestamp: 1765090869

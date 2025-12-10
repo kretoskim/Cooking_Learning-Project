@@ -14,41 +14,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentVersion: 1.01
   subtype: kitchenchaos
-  lastShownTimestamp: 1765179781
+  lastShownTimestamp: 1765354951
   lastUpdateResponse:
     version: 1.01
     versionUrl: https://unitycodemonkey.com
-  checkedLastUpdateTimestamp: 1765179781
+  checkedLastUpdateTimestamp: 1765354951
   lastQOTDResponse:
-    questionId: 249
-    questionText: 'Is this valid code?
+    questionId: 250
+    questionText: 'Does this code have an error?
 
-      <p>Color? myColor = null;</p>'
+      <p>int myNewX = 10;</p>
+
+      <p>transform.position.x
+      = myNewX;</p>'
     answerA: Yes
-    answerB: No, myColor is a struct and cannot be null
-    answerC: 
+    answerB: No
+    answerC: Only if GameObject does not have a Transform component
     answerD: 
     answerE: 
-  lastQotdTimestamp: 1765179781
+  lastQotdTimestamp: 1765354951
   lastDynamicHeaderResponse:
     topImageUrl: https://codemonkeyexternal.blob.core.windows.net/external/Misc/unityBlackFridayAssetStoreDec25.png
     topText: Unity Asset Store is still having their BLACK FRIDAY deals!
     topLink: unityassetstore
     bottomText: My 10+ Years of C# Knowledge in 1 Course!
     bottomLink: csharpcourse
-  lastDynamicHeaderTimestamp: 1765179781
+  lastDynamicHeaderTimestamp: 1765354951
   websiteLatestMessage:
     text: <a href="https://cmonkey.co/freecourses">Check out all my FREE courses!
       Click here!</a>
-  websiteLatestMessageTimestamp: 1765179781
+  websiteLatestMessageTimestamp: 1765354951
   websiteLatestVideos:
     videos:
+    - youTubeId: j7mZEZzNq9o
+      title: TOP 10 NEW Games, Made with Unity! (NOVEMBER 2025)
     - youTubeId: wAI7TNtW7xM
       title: How MUCH is your Time WORTH?
     - youTubeId: c4tyM-o2uJQ
       title: Make your Console 10X BETTER with this Tool! (50% OFF!)
     - youTubeId: 2AG3POM9wOs
       title: What are Unity Building Blocks?
-    - youTubeId: uYkVz724eng
-      title: TOP 10 NEW Tools AND Visuals NOVEMBER 2025!
-  websiteLatestVideosTimestamp: 1765179781
+  websiteLatestVideosTimestamp: 1765354951

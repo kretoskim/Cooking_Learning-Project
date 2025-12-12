@@ -5,6 +5,7 @@ using System;
 public class GameStartCountdownUI : MonoBehaviour
 {
 [SerializeField] private TextMeshProUGUI countdownText;
+private int previousCountdownNumber;
 
     private void Start()
     {
@@ -27,7 +28,14 @@ public class GameStartCountdownUI : MonoBehaviour
     }
     private void Update()
     {
-        countdownText.text = Mathf.Ceil(GameManager.Instance.GetCountdownToStartTimer()).ToString();
+        int countdownNumber = Mathf.CeilToInt(GameManager.Instance.GetCountdownToStartTimer());
+        countdownText.text = countdownNumber.ToString();
+
+        if(previousCountdownNumber != countdownNumber)
+        {
+            previousCountdownNumber = countdownNumber;
+            SoundManager.Instance.PlayCountdownSound();
+        }
     }
     private void Show()
     {

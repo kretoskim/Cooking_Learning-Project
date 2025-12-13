@@ -1391,6 +1391,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeliveryCounter
       objectReference: {fileID: 0}
+    - target: {fileID: 6576628052702206116, guid: b0d01775ac965764e9afbdd7d25a9da0, type: 3}
+      propertyPath: mode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7059871472829746869, guid: b0d01775ac965764e9afbdd7d25a9da0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.5

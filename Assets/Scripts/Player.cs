@@ -1,7 +1,8 @@
 using UnityEngine;
-using System;   //EventHandler<> EventArgs live here
+using System;       //EventHandler<> EventArgs live here
+using Unity.Netcode;   
 
-public class Player : MonoBehaviour, IKitchenObjectParent
+public class Player : NetworkBehaviour, IKitchenObjectParent
 {
     public static Player Instance { get; private set; }
 
@@ -22,11 +23,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent
 
     private void Awake() 
     {
-        if (Instance != null)
-        {
-            Debug.LogError("There is more than one Player instance");
-        }  
-        Instance = this;
+        //Instance = this;
     }
     private void Start()
     {

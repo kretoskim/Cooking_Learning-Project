@@ -10,15 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e651dbb3fbac04af2b8f5abf007ddc23, type: 3}
-  m_Name: DefaultNetworkPrefabs
+  m_Name: KitchenObjectNetworkPrefabsList
   m_EditorClassIdentifier: 
-  IsDefault: 1
+  IsDefault: 0
   List:
-  - Override: 0
-    Prefab: {fileID: 6637790158033020598, guid: c39d94a9ab8fb394db85317892b46f54, type: 3}
-    SourcePrefabToOverride: {fileID: 0}
-    SourceHashToOverride: 0
-    OverridingTargetPrefab: {fileID: 0}
   - Override: 0
     Prefab: {fileID: 7319730341366760068, guid: 721e60f5ee233fe4baca5325d68b2cfa, type: 3}
     SourcePrefabToOverride: {fileID: 0}
@@ -45,12 +40,12 @@ MonoBehaviour:
     SourceHashToOverride: 0
     OverridingTargetPrefab: {fileID: 0}
   - Override: 0
-    Prefab: {fileID: 7319730341366760068, guid: aa87d4a1d3ebc8040b64e37ead2e5712, type: 3}
+    Prefab: {fileID: 7319730341366760068, guid: cc41c2b22b320274f85645f2c627c7fd, type: 3}
     SourcePrefabToOverride: {fileID: 0}
     SourceHashToOverride: 0
     OverridingTargetPrefab: {fileID: 0}
   - Override: 0
-    Prefab: {fileID: 7319730341366760068, guid: cc41c2b22b320274f85645f2c627c7fd, type: 3}
+    Prefab: {fileID: 7319730341366760068, guid: aa87d4a1d3ebc8040b64e37ead2e5712, type: 3}
     SourcePrefabToOverride: {fileID: 0}
     SourceHashToOverride: 0
     OverridingTargetPrefab: {fileID: 0}

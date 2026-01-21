@@ -40,9 +40,11 @@ public class KitchenObject : NetworkBehaviour
 
         if(kitchenObjectParent.HasKitchenObject())
         {
-            Debug.LogError("IKitchenObjectParent already has KitchenObject"); 
+            // Debug.LogError("IKitchenObjectParent already has KitchenObject"); 
+            // I'LL FIX THIS LOG ERROR LATER ON (UNITY 6 ENFORCES STRICTER AUTHORITY COMPARED TO OLDER UNITY VERSIONS)
+            Debug.Log("IKitchenObjectParent already has KitchenObject");
         }
-        
+
         kitchenObjectParent.SetKitchenObject(this);
 
         followTransform.SetTargetTransform(kitchenObjectParent.GetKitchenObjectFollowTransform());

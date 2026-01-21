@@ -7,7 +7,7 @@ public class KitchenObject : NetworkBehaviour
     [SerializeField] private KitchenObjectSO kitchenObjectSO;
     private IKitchenObjectParent kitchenObjectParent;
     private FollowTransform followTransform;
-    private void Awake()
+    protected virtual void Awake()
     {
         followTransform = GetComponent<FollowTransform>();
     }

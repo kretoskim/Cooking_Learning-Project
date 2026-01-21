@@ -42,12 +42,10 @@ public class KitchenObject : NetworkBehaviour
         {
             Debug.LogError("IKitchenObjectParent already has KitchenObject"); 
         }
+        
         kitchenObjectParent.SetKitchenObject(this);
 
         followTransform.SetTargetTransform(kitchenObjectParent.GetKitchenObjectFollowTransform());
-
-        // gameObject.SetActive(true);
-        // Debug.Log($"Picked up {kitchenObjectSO.objectName} - Visible: {gameObject.activeInHierarchy}");
     }
 
     public IKitchenObjectParent GetKitchenObjectParent()

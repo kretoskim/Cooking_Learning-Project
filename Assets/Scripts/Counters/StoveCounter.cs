@@ -129,7 +129,7 @@ public class StoveCounter : BaseCounter, IHasProgress
 
                     InteractLogicPlaceObjectOnCounterServerRpc(KitchenGameMultiplayer.Instance.GetKitchenObjectSOIndex(kitchenObject.GetKitchenObjectSO()));
                     
-                    player.GetKitchenObject().SetKitchenObjectParent(this);    
+                    // player.GetKitchenObject().SetKitchenObjectParent(this);    
                 }
             }
             else

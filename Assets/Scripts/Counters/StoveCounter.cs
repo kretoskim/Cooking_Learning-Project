@@ -91,8 +91,13 @@ public class StoveCounter : BaseCounter, IHasProgress
 
                         state.Value = State.Fried;
                         burningTimer.Value = 0f;
+
+                        KitchenObjectSO kitchenObjectSO = GetKitchenObject().GetKitchenObjectSO();
+
+                        burningRecipeSO = GetBurningRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSO());
+
                         SetBurningRecipeSOClientRpc(KitchenGameMultiplayer.Instance.GetKitchenObjectSOIndex(GetKitchenObject().GetKitchenObjectSO()));
-                        burningRecipeSO = GetBurningRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSO());                 
+                                         
                     }
                     break;
                 case State.Fried:
@@ -104,6 +109,7 @@ public class StoveCounter : BaseCounter, IHasProgress
                         KitchenObject.DestroyKitchenObject( GetKitchenObject());
 
                         KitchenObject.SpawnKitchenObject(burningRecipeSO.output, this);
+
                         state.Value = State.Burned;
                     }
                     break;
@@ -169,6 +175,10 @@ public class StoveCounter : BaseCounter, IHasProgress
     {
         fryingTimer.Value = 0f;
         state.Value = State.Frying;
+
+        KitchenObjectSO kitchenObjectSO = KitchenGameMultiplayer.Instance.GetKitchenObjectSOFromIndex(kitchenObjectSOIndex);
+        
+        fryingRecipeSO = GetFryingRecipeSOWithInput(kitchenObjectSO);
 
         SetFryingRecipeSOClientRpc(kitchenObjectSOIndex);
     }

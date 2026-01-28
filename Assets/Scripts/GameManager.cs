@@ -1,6 +1,9 @@
 using UnityEngine;
 using System;
-public class GameManager : MonoBehaviour
+using System.Collections.Generic;
+using Unity.Netcode;
+
+public class GameManager : NetworkBehaviour 
 {
     public static GameManager Instance { get; private set;}
     public event EventHandler OnStateChanged;
@@ -16,17 +19,21 @@ public class GameManager : MonoBehaviour
     }
 
     private State state;
+      private bool isLocalPlayerReady;
     private float countdownToStartTimer = 3f;
     private float gamePlayingTimer; 
     private float gamePlayingTimerMax = 100f;
     private bool isGamePaused = false;
-    private bool isLocalPlayerReady;
+    private Dictionary<ulong, bool> playerReadyDictionary;
+  
 
     private void Awake()
     {
         Instance = this;
 
         state = State.WaitingToStart;
+
+        playerReadyDictionary = new Dictionary<ulong, bool>();
     }
     private void Start()
     {
@@ -39,8 +46,30 @@ public class GameManager : MonoBehaviour
         if(state == State.WaitingToStart)
         {
             isLocalPlayerReady = true;
+
+            SetPlayerReadyServerRpc();
+
             IsLocalPlayerReadyChanged?.Invoke(this, EventArgs.Empty);
         }
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void SetPlayerReadyServerRpc(ServerRpcParams serverRpcParams = default)
+    {
+        playerReadyDictionary[serverRpcParams.Receive.SenderClientId] = true;
+
+        bool allClientsReady = true;
+        foreach(ulong clientId in NetworkManager.Singleton.ConnectedClientsIds)
+        {
+            if(!playerReadyDictionary.ContainsKey(clientId) || !playerReadyDictionary[clientId])
+            {
+                //This player is NOT ready
+                allClientsReady = false;
+                break;
+            }
+        }
+
+        Debug.Log("allClientsReady:" + allClientsReady);
     }
 
     private void GameInput_OnPauseAction(object sender, EventArgs e)

@@ -18,10 +18,10 @@ public class GameManager : NetworkBehaviour
         GameOver,
     }
 
-    private State state;
+    private NetworkVariable<State> state = new NetworkVariable<State>(State.WaitingToStart);
       private bool isLocalPlayerReady;
-    private float countdownToStartTimer = 3f;
-    private float gamePlayingTimer; 
+    private NetworkVariable <float> countdownToStartTimer = new NetworkVariable<float>(3f);
+    private NetworkVariable <float> gamePlayingTimer = new NetworkVariable<float>(0f); 
     private float gamePlayingTimerMax = 100f;
     private bool isGamePaused = false;
     private Dictionary<ulong, bool> playerReadyDictionary;
@@ -31,8 +31,6 @@ public class GameManager : NetworkBehaviour
     {
         Instance = this;
 
-        state = State.WaitingToStart;
-
         playerReadyDictionary = new Dictionary<ulong, bool>();
     }
     private void Start()
@@ -41,15 +39,26 @@ public class GameManager : NetworkBehaviour
         GameInput.Instance.OnInteractAction += GameInput_OnInteractAction;
     }
 
+    public override void OnNetworkSpawn()
+    {
+        state.OnValueChanged += State_OnValueChanged;
+    }
+
+    private void State_OnValueChanged(State previousValue, State newValue)
+    {
+        OnStateChanged?.Invoke(this, EventArgs.Empty);
+    }
+
     private void GameInput_OnInteractAction(object sender, EventArgs e)
     {
-        if(state == State.WaitingToStart)
+        if(state.Value == State.WaitingToStart)
         {
             isLocalPlayerReady = true;
+            IsLocalPlayerReadyChanged?.Invoke(this, EventArgs.Empty);
 
             SetPlayerReadyServerRpc();
 
-            IsLocalPlayerReadyChanged?.Invoke(this, EventArgs.Empty);
+
         }
     }
 
@@ -69,6 +78,10 @@ public class GameManager : NetworkBehaviour
             }
         }
 
+        if(allClientsReady)
+        {
+            state.Value = State.CountdownToStart;
+        }
         Debug.Log("allClientsReady:" + allClientsReady);
     }
 
@@ -79,25 +92,27 @@ public class GameManager : NetworkBehaviour
 
     private void Update()
     {
-        switch (state)
+        if(!IsServer)
+        {
+            return;
+        }
+        switch (state.Value)
         {
             case State.WaitingToStart:
                 break;
             case State.CountdownToStart:
-                countdownToStartTimer -= Time.deltaTime;
-                if(countdownToStartTimer < 0f)
+                countdownToStartTimer.Value -= Time.deltaTime;
+                if(countdownToStartTimer.Value < 0f)
                 {
-                    state = State.GamePlaying;
-                    gamePlayingTimer = gamePlayingTimerMax;
-                    OnStateChanged?.Invoke(this, EventArgs.Empty);
+                    state.Value = State.GamePlaying;
+                    gamePlayingTimer.Value = gamePlayingTimerMax;
                 }
                 break;
             case State.GamePlaying:
-                gamePlayingTimer -= Time.deltaTime;
-                if(gamePlayingTimer < 0f)
+                gamePlayingTimer.Value -= Time.deltaTime;
+                if(gamePlayingTimer.Value < 0f)
                 {
-                    state = State.GameOver;
-                    OnStateChanged?.Invoke(this, EventArgs.Empty);
+                    state.Value = State.GameOver;
                 }
                 break;
             case State.GameOver:
@@ -107,19 +122,19 @@ public class GameManager : NetworkBehaviour
     }
     public bool IsGamePlaying()
     {
-        return state == State.GamePlaying;
+        return state.Value == State.GamePlaying;
     }
     public bool IsCountdownToStartActive()
     {
-        return state == State.CountdownToStart;
+        return state.Value == State.CountdownToStart;
     }
     public float GetCountdownToStartTimer()
     {
-        return countdownToStartTimer;
+        return countdownToStartTimer.Value;
     }
     public bool IsGameOver()
     {
-        return state == State.GameOver;
+        return state.Value == State.GameOver;
     }
     public bool IsLocalPlayerReady()
     {
@@ -127,7 +142,7 @@ public class GameManager : NetworkBehaviour
     }
     public float GetGamePlayingTimerNormalized()
     {
-        return 1 - (gamePlayingTimer/gamePlayingTimerMax);
+        return 1 - (gamePlayingTimer.Value/gamePlayingTimerMax);
     }
     public void TogglePauseGame()
     {

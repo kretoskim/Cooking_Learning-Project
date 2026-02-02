@@ -9,8 +9,8 @@ public class TestingNetcodeUI : MonoBehaviour
 
     private void Awake()
     {
-        startHostButton.onClick.AddListener(()=> {Debug.Log("HOST"); NetworkManager.Singleton.StartHost(); Hide();});
-        startClientButton.onClick.AddListener(() => {Debug.Log("CLIENT"); NetworkManager.Singleton.StartClient(); Hide();});
+        startHostButton.onClick.AddListener(()=> {Debug.Log("HOST"); KitchenGameMultiplayer.Instance.StartHost(); Hide();});
+        startClientButton.onClick.AddListener(() => {Debug.Log("CLIENT"); KitchenGameMultiplayer.Instance.StartClient(); Hide();});
     }
     private void Hide()
     {

@@ -184,6 +184,10 @@ public class GameManager : NetworkBehaviour
     {
         return state.Value == State.GameOver;
     }
+    public bool IsWaitingToStart()
+    {
+        return state.Value == State.WaitingToStart;
+    }
     public bool IsLocalPlayerReady()
     {
         return isLocalPlayerReady;
@@ -228,7 +232,7 @@ public class GameManager : NetworkBehaviour
     {
         if (NetworkManager.Singleton == null || !NetworkManager.Singleton.IsListening)
         return;
-        
+
         foreach (ulong clientId in NetworkManager.Singleton.ConnectedClientsIds)
         {
             if(playerPausedDictionary.ContainsKey(clientId) && playerPausedDictionary[clientId])

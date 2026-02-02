@@ -65,7 +65,7 @@ public class OptionsUI : MonoBehaviour
     }
     private void Start()
     {
-        GameManager.Instance.OnGamePaused += GameManager_OnGamePaused;
+        GameManager.Instance.OnLocalGamePaused += GameManager_OnGamePaused;
         
         UpdateVisual();
 

@@ -26,6 +26,7 @@ public class GameManager : NetworkBehaviour
     private NetworkVariable <float> gamePlayingTimer = new NetworkVariable<float>(0f); 
     private float gamePlayingTimerMax = 100f;
     private bool isLocalGamePaused = false;
+    private bool autoTestGamePausedState;
     private NetworkVariable<bool> isGamePaused = new NetworkVariable<bool>(false);
     private Dictionary<ulong, bool> playerReadyDictionary;
     private Dictionary<ulong, bool> playerPausedDictionary;
@@ -48,7 +49,24 @@ public class GameManager : NetworkBehaviour
     {
         state.OnValueChanged += State_OnValueChanged;
         isGamePaused.OnValueChanged += IsGamePaused_OnValueChanged;
+
+        if(IsServer)
+        {
+            NetworkManager.Singleton.OnClientDisconnectCallback += NetworkManager_OnClientDisconnectCallback;
+        }
     }
+
+    private void NetworkManager_OnClientDisconnectCallback(ulong clientId)
+    {
+        autoTestGamePausedState = true;
+
+        // 🔥 CLEAN UP DISCONNECTED PLAYER DATA
+        if (playerReadyDictionary.ContainsKey(clientId))
+            playerReadyDictionary.Remove(clientId);
+
+        if (playerPausedDictionary.ContainsKey(clientId))
+            playerPausedDictionary.Remove(clientId);      
+        }
 
     private void IsGamePaused_OnValueChanged(bool previousValue, bool newValue)
     {
@@ -61,7 +79,7 @@ public class GameManager : NetworkBehaviour
         else
         {
             Time.timeScale = 1f;
-            
+
             OnMultiplayerGameUnpaused?.Invoke(this, EventArgs.Empty);
         }
     }
@@ -142,6 +160,14 @@ public class GameManager : NetworkBehaviour
         } 
         //Debug.Log(state);  
     }
+    private void LateUpdate()
+    {
+        if(autoTestGamePausedState)
+        {
+            autoTestGamePausedState = false;
+            TestGamePausedState();
+        }
+    }
     public bool IsGamePlaying()
     {
         return state.Value == State.GamePlaying;
@@ -200,6 +226,9 @@ public class GameManager : NetworkBehaviour
     }
     private void TestGamePausedState()
     {
+        if (NetworkManager.Singleton == null || !NetworkManager.Singleton.IsListening)
+        return;
+        
         foreach (ulong clientId in NetworkManager.Singleton.ConnectedClientsIds)
         {
             if(playerPausedDictionary.ContainsKey(clientId) && playerPausedDictionary[clientId])

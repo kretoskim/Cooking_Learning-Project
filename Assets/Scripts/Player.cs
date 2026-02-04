@@ -31,6 +31,15 @@ public class Player : NetworkBehaviour, IKitchenObjectParent
 
     private void Start()
     {
+        if(!IsOwner)
+        {
+            return;
+        }
+        if(GameInput.Instance == null)
+        {
+            return;
+        }
+
         GameInput.Instance.OnInteractAction += GameInput_OnInteractAction;
         GameInput.Instance.OnInteractAlternateAction += GameInput_OnInteractAlternateAction;
     }
@@ -86,6 +95,19 @@ public class Player : NetworkBehaviour, IKitchenObjectParent
         {
             return;
         }
+        if(GameInput.Instance == null)
+        {
+            return;
+        }
+        if(GameManager.Instance == null)
+        {
+            return;
+        }
+        if(!GameManager.Instance.IsGamePlaying())
+        {
+            return;
+        }
+        
         HandleMovement();
         HandleInteractions();
     }

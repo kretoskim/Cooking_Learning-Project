@@ -270,7 +270,20 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3294758251327466535, guid: 1c5dda3c7cd3cf742afcade5419faeab, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3966825143919186824}
+    - targetCorrespondingSourceObject: {fileID: 3294758251327466535, guid: 1c5dda3c7cd3cf742afcade5419faeab, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8427396055832820530}
   m_SourcePrefab: {fileID: 100100000, guid: 1c5dda3c7cd3cf742afcade5419faeab, type: 3}
+--- !u!23 &4295422419377126136 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3294758250785316822, guid: 1c5dda3c7cd3cf742afcade5419faeab, type: 3}
+  m_PrefabInstance: {fileID: 1595737454426481966}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &4295422419727548321 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3294758251441920655, guid: 1c5dda3c7cd3cf742afcade5419faeab, type: 3}
+  m_PrefabInstance: {fileID: 1595737454426481966}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4295422419906677001 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3294758251327466535, guid: 1c5dda3c7cd3cf742afcade5419faeab, type: 3}
@@ -314,6 +327,20 @@ MonoBehaviour:
       Synchronize: 1
       ParameterType: 4
   AnimatorParametersExpanded: 0
+--- !u!114 &8427396055832820530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4295422419906677001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1442e14a5a23314fbb3f0e25b8bab61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  headMeshRenderer: {fileID: 4295422419377126136}
+  bodyMeshRenderer: {fileID: 4295422419727548321}
 --- !u!4 &4295422419906677002 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3294758251327466532, guid: 1c5dda3c7cd3cf742afcade5419faeab, type: 3}

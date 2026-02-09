@@ -2,6 +2,7 @@ using UnityEngine;
 using Unity.Netcode;
 using System;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class KitchenGameMultiplayer : NetworkBehaviour
 {
@@ -11,7 +12,8 @@ public class KitchenGameMultiplayer : NetworkBehaviour
     public event EventHandler OnFailedToJoinGame;
     public event EventHandler OnPlayerDataNetworkListChanged;
     [SerializeField] private KitchenObjectListSO kitchenObjectListSO;
-    public NetworkList<PlayerData> playerDataNetworkList;
+    [SerializeField] private List<Color> playerColorList;
+    private NetworkList<PlayerData> playerDataNetworkList;
 
     private void Awake()
     {
@@ -134,5 +136,9 @@ public class KitchenGameMultiplayer : NetworkBehaviour
     public PlayerData GetPlayerDataFromIndex(int playerIndex)
     {
         return playerDataNetworkList[playerIndex];
+    }
+    public Color GetPlayerColor(int colorId)
+    {
+        return playerColorList[colorId];
     }
 }

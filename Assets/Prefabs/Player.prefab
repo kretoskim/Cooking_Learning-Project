@@ -90,6 +90,7 @@ MonoBehaviour:
   - {x: -0.5, y: 0, z: 0}
   - {x: 1, y: 0, z: 0}
   - {x: 2, y: 0, z: -1}
+  playerVisual: {fileID: 8427396055832820530}
 --- !u!114 &7740593379940625117
 MonoBehaviour:
   m_ObjectHideFlags: 0

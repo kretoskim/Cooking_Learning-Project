@@ -6,6 +6,10 @@ using UnityEngine.UI;
 public class HostDisconnectUI : MonoBehaviour
 {
     [SerializeField] Button playAgainButton;
+    private void Awake()
+    {
+        playAgainButton.onClick.AddListener(() => {Loader.Load(Loader.Scene.MainMenuScene);});
+    }
     private void Start()
     {
         NetworkManager.Singleton.OnClientDisconnectCallback += NetworkManager_OnClientDisconnectCallback;
@@ -28,5 +32,9 @@ public class HostDisconnectUI : MonoBehaviour
     private void Hide()
     {
         gameObject.SetActive(false);
+    }
+    private void OnDestroy() 
+    {
+        NetworkManager.Singleton.OnClientDisconnectCallback -= NetworkManager_OnClientDisconnectCallback;
     }
 }

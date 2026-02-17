@@ -10,6 +10,7 @@ public class LobbyCreateUI : MonoBehaviour
     [SerializeField] private Button closeButton;
     [SerializeField] private TMP_InputField lobbyNameInputField;
     
+    
 
     private void Awake()
     {

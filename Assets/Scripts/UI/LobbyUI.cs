@@ -14,7 +14,7 @@ public class LobbyUI : MonoBehaviour
 
     private void Awake()
     {
-        mainMenuButton.onClick.AddListener(() => {Loader.Load(Loader.Scene.MainMenuScene);});
+        mainMenuButton.onClick.AddListener(() => {KitchenGameLobby.Instance.LeaveLobby(); Loader.Load(Loader.Scene.MainMenuScene);});
         quickJoinButton.onClick.AddListener(() => {KitchenGameLobby.Instance.QuickJoin();});
         createLobbyButton.onClick.AddListener(() => {lobbyCreateUI.Show();});
         joinWithCodeButton.onClick.AddListener(() => {KitchenGameLobby.Instance.JoinWithCode(joinCodeInputField.text);});

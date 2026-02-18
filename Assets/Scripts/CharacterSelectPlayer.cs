@@ -13,8 +13,11 @@ public class CharacterSelectPlayer : MonoBehaviour
     [SerializeField] private TextMeshPro playerNameText;
     private void Awake()
     {
-        kickButton.onClick.AddListener(() => {PlayerData playerData = KitchenGameMultiplayer.Instance.GetPlayerDataFromIndex(playerIndex);
-                                              KitchenGameMultiplayer.Instance.KickPlayer(playerData.clientId);});
+        kickButton.onClick.AddListener(()=> {
+                                                PlayerData playerData = KitchenGameMultiplayer.Instance.GetPlayerDataFromIndex(playerIndex);
+                                                KitchenGameLobby.Instance.KickPlayer(playerData.playerId.ToString());
+                                                KitchenGameMultiplayer.Instance.KickPlayer(playerData.clientId);
+                                            });
     }
     private void Start()
     {

@@ -13,7 +13,7 @@ public class CharacterSelectUI : MonoBehaviour
 
     private void Awake()
     {
-        mainMenuButton.onClick.AddListener(() =>{NetworkManager.Singleton.Shutdown(); Loader.Load(Loader.Scene.MainMenuScene);});
+        mainMenuButton.onClick.AddListener(() =>{KitchenGameLobby.Instance.LeaveLobby(); NetworkManager.Singleton.Shutdown(); Loader.Load(Loader.Scene.MainMenuScene);});
         readyButton.onClick.AddListener(() =>{CharacterSelectReady.Instance.SetPlayerReady();});
     }
     private void Start()

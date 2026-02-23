@@ -137,7 +137,7 @@ public class KitchenGameLobby : MonoBehaviour
         }
         catch (RelayServiceException e)
         {
-            
+            Debug.Log(e);
             return default;
         }
     }
@@ -163,7 +163,6 @@ public class KitchenGameLobby : MonoBehaviour
         {
             lobbyName = "The Lobby";
         }
-
         OnCreateLobbyStarted?.Invoke(this, EventArgs.Empty);
         try
         {
@@ -288,7 +287,7 @@ public class KitchenGameLobby : MonoBehaviour
             }
             catch (LobbyServiceException e)
             {               
-                Debug.Log(e);;
+                Debug.Log(e);
             }
         }
     }
@@ -304,7 +303,7 @@ public class KitchenGameLobby : MonoBehaviour
             }
             catch (LobbyServiceException e)
             {               
-                Debug.Log(e);;
+                Debug.Log(e);
             }
         }
     }
@@ -318,7 +317,7 @@ public class KitchenGameLobby : MonoBehaviour
             }
             catch (LobbyServiceException e)
             {
-                Debug.Log(e);;
+                Debug.Log(e);
             }
         }
     }

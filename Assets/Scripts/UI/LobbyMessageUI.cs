@@ -13,42 +13,31 @@ public class LobbyMessageUI : MonoBehaviour
         closeButton.onClick.AddListener(Hide);
     }
     private void Start()
-    {
-        KitchenGameMultiplayer.Instance.OnFailedToJoinGame += KitchenGameMultiplayer_OnFailedToJoinGame;
-        KitchenGameLobby.Instance.OnCreateLobbyStarted += KitchenGameLobby_OnCreateLobbyStarted;
-        KitchenGameLobby.Instance.OnCreateLobbyFailed += KitchenGameLobby_OnCreateLobbyFailed;
-        KitchenGameLobby.Instance.OnJoinStarted += KitchenGameLobby_OnJoinStarted;
-        KitchenGameLobby.Instance.OnJoinFailed += KitchenGameLobby_OnJoinFailed;
-        KitchenGameLobby.Instance.OnQuickJoinFailed += KitchenGameLobby_OnQuickJoinFailed;
+    {   
+        if(KitchenGameMultiplayer.Instance != null)
+        {
+           KitchenGameMultiplayer.Instance.OnFailedToJoinGame += KitchenGameMultiplayer_OnFailedToJoinGame; 
+        }
+        else
+        {
+            Debug.LogWarning("KitcehnGameMultiplayer.Instance not found in LobbyUI");
+        }
+        
+        if(KitchenGameLobby.Instance != null)
+        {
+            KitchenGameLobby.Instance.OnCreateLobbyStarted += KitchenGameLobby_OnCreateLobbyStarted;
+            KitchenGameLobby.Instance.OnCreateLobbyFailed += KitchenGameLobby_OnCreateLobbyFailed;
+            KitchenGameLobby.Instance.OnJoinStarted += KitchenGameLobby_OnJoinStarted;
+            KitchenGameLobby.Instance.OnJoinFailed += KitchenGameLobby_OnJoinFailed;
+            KitchenGameLobby.Instance.OnQuickJoinFailed += KitchenGameLobby_OnQuickJoinFailed;
+        }       
+        else
+        {
+            Debug.LogWarning("KitchenGameLobby.Instance not found in LobbyUI");
+        }
 
-        Hide();
+        Hide();    
     }
-
-    private void KitchenGameLobby_OnJoinStarted(object sender, EventArgs e)
-    {
-        ShowMessage("Joining Lobby...");
-    }
-
-    private void KitchenGameLobby_OnJoinFailed(object sender, EventArgs e)
-    {
-        ShowMessage("Failed to join Lobby");
-    }
-
-    private void KitchenGameLobby_OnQuickJoinFailed(object sender, EventArgs e)
-    {
-        ShowMessage("Could not find a Lobby to Quick Join");
-    }
-
-    private void KitchenGameLobby_OnCreateLobbyStarted(object sender, EventArgs e)
-    {
-        ShowMessage("Creating Lobby...");
-    }
-
-    private void KitchenGameLobby_OnCreateLobbyFailed(object sender, EventArgs e)
-    {
-        ShowMessage("Failed to create Lobby");
-    }
-
     private void KitchenGameMultiplayer_OnFailedToJoinGame(object sender, EventArgs e)
     {
         if(NetworkManager.Singleton.DisconnectReason == "" || string.IsNullOrEmpty(messageText.text))
@@ -60,6 +49,28 @@ public class LobbyMessageUI : MonoBehaviour
             ShowMessage(NetworkManager.Singleton.DisconnectReason);
         }
     }
+    private void KitchenGameLobby_OnCreateLobbyStarted(object sender, EventArgs e)
+    {
+        ShowMessage("Creating Lobby...");
+    }
+    private void KitchenGameLobby_OnCreateLobbyFailed(object sender, EventArgs e)
+    {
+        ShowMessage("Failed to create Lobby");
+    }
+    private void KitchenGameLobby_OnJoinStarted(object sender, EventArgs e)
+    {
+        ShowMessage("Joining Lobby...");
+    }
+
+    private void KitchenGameLobby_OnJoinFailed(object sender, EventArgs e)
+    {
+        ShowMessage("Failed to join Lobby");
+    }
+    private void KitchenGameLobby_OnQuickJoinFailed(object sender, EventArgs e)
+    {
+        ShowMessage("Could not find a Lobby to Quick Join");
+    }
+
     private void ShowMessage(string message)
     {
         Show();
@@ -76,11 +87,18 @@ public class LobbyMessageUI : MonoBehaviour
     }
     private void OnDestroy()
     {
-        KitchenGameMultiplayer.Instance.OnFailedToJoinGame -= KitchenGameMultiplayer_OnFailedToJoinGame;
-        KitchenGameLobby.Instance.OnCreateLobbyStarted -= KitchenGameLobby_OnCreateLobbyStarted;
-        KitchenGameLobby.Instance.OnCreateLobbyFailed -= KitchenGameLobby_OnCreateLobbyFailed;
-        KitchenGameLobby.Instance.OnJoinStarted -= KitchenGameLobby_OnJoinStarted;
-        KitchenGameLobby.Instance.OnJoinFailed -= KitchenGameLobby_OnJoinFailed;
-        KitchenGameLobby.Instance.OnQuickJoinFailed -= KitchenGameLobby_OnQuickJoinFailed;
+        if(KitchenGameMultiplayer.Instance != null)
+        {
+            KitchenGameMultiplayer.Instance.OnFailedToJoinGame -= KitchenGameMultiplayer_OnFailedToJoinGame;
+        }
+        
+        if(KitchenGameLobby.Instance != null)
+        {
+            KitchenGameLobby.Instance.OnCreateLobbyStarted -= KitchenGameLobby_OnCreateLobbyStarted;
+            KitchenGameLobby.Instance.OnCreateLobbyFailed -= KitchenGameLobby_OnCreateLobbyFailed;
+            KitchenGameLobby.Instance.OnJoinStarted -= KitchenGameLobby_OnJoinStarted;
+            KitchenGameLobby.Instance.OnJoinFailed -= KitchenGameLobby_OnJoinFailed;
+            KitchenGameLobby.Instance.OnQuickJoinFailed -= KitchenGameLobby_OnQuickJoinFailed;
+        }       
     }
 }

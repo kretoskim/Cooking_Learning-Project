@@ -51,7 +51,7 @@ public class LobbyUI : MonoBehaviour
         {
             Debug.Log($" → Adding lobby: {lobby.Name} (ID: {lobby.Id})");
             Transform lobbyTransform = Instantiate(lobbyTemplate, lobbyContainer);
-            lobbyTemplate.gameObject.SetActive(true);
+            lobbyTransform.gameObject.SetActive(true);
             lobbyTransform.GetComponent<LobbyListSingleUI>().SetLobby(lobby);
         }
     }

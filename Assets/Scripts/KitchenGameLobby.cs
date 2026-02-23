@@ -146,7 +146,7 @@ public class KitchenGameLobby : MonoBehaviour
         OnJoinStarted?.Invoke(this, EventArgs.Empty);
         try
         {
-           joinedLobby = await LobbyService.Instance.JoinLobbyByCodeAsync(lobbyId);
+           joinedLobby = await LobbyService.Instance.JoinLobbyByIdAsync(lobbyId);
 
            KitchenGameMultiplayer.Instance.StartClient(); 
         }

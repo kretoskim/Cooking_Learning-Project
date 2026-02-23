@@ -41,12 +41,12 @@ public class LobbyMessageUI : MonoBehaviour
 
     private void KitchenGameLobby_OnCreateLobbyStarted(object sender, EventArgs e)
     {
-        ShowMessage("Failed to create Lobby");
+        ShowMessage("Creating Lobby...");
     }
 
     private void KitchenGameLobby_OnCreateLobbyFailed(object sender, EventArgs e)
     {
-        ShowMessage("Creating Lobby...");
+        ShowMessage("Failed to create Lobby");
     }
 
     private void KitchenGameMultiplayer_OnFailedToJoinGame(object sender, EventArgs e)

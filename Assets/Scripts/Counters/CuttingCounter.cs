@@ -89,7 +89,11 @@ public class CuttingCounter : BaseCounter, IHasProgress
     [Rpc(SendTo.Server, InvokePermission = RpcInvokePermission.Everyone)]
     private void CutObjectServerRpc()
     {
-        CutObjectClientRpc();
+        if(HasKitchenObject() && HasRecipeWithInput(GetKitchenObject().GetKitchenObjectSO()))
+        {
+            //There is a KitchenObject here AND it can be cut
+            CutObjectClientRpc();
+        }   
     }
 
     [ClientRpc]
@@ -106,22 +110,26 @@ public class CuttingCounter : BaseCounter, IHasProgress
             {
                 progressNormalized = (float)cuttingProgress / cuttingRecipeSO.cuttingProgressMax
             });
-
     }
     
     [Rpc(SendTo.Server, InvokePermission = RpcInvokePermission.Everyone)]
     private void TestCuttingProgressDoneServerRpc()
     {
-        CuttingRecipeSO cuttingRecipeSO = GetCuttingRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSO());
+         if(HasKitchenObject() && HasRecipeWithInput(GetKitchenObject().GetKitchenObjectSO()))
+        {
+            //There is a KitchenObject here AND it can be cut    
+            CuttingRecipeSO cuttingRecipeSO = GetCuttingRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSO());
 
-        if(cuttingProgress >= cuttingRecipeSO.cuttingProgressMax)
+            if(cuttingProgress >= cuttingRecipeSO.cuttingProgressMax)
             {
                 KitchenObjectSO outputKitchenObjecSO = GetOutputForInput(GetKitchenObject().GetKitchenObjectSO());
-                
-                GetKitchenObject().DestroySelf();
+                    
+                //GetKitchenObject().DestroySelf();
+                KitchenObject.DestroyKitchenObject(GetKitchenObject());
 
                 KitchenObject.SpawnKitchenObject(outputKitchenObjecSO, this);  
             }
+        }
     }
 
     private bool HasRecipeWithInput(KitchenObjectSO inputKitchenObjectSO)
@@ -139,8 +147,7 @@ public class CuttingCounter : BaseCounter, IHasProgress
         else
         {
             return null;
-        }
-        
+        }       
     }
     private CuttingRecipeSO GetCuttingRecipeSOWithInput(KitchenObjectSO inputKitchenObjectSO)
     {

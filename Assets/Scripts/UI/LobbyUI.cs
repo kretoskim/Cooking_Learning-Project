@@ -29,6 +29,11 @@ public class LobbyUI : MonoBehaviour
 
     private void Start()
     {
+        if(!KitchenGameMultiplayer.playMultiplayer)
+        {
+            Hide();
+            return;
+        }
         playerNameInputField.text = KitchenGameMultiplayer.Instance.GetPlayerName();
         playerNameInputField.onValueChanged.AddListener((string newText) => {KitchenGameMultiplayer.Instance.SetPlayerName(newText);});
         
@@ -54,6 +59,10 @@ public class LobbyUI : MonoBehaviour
             lobbyTransform.gameObject.SetActive(true);
             lobbyTransform.GetComponent<LobbyListSingleUI>().SetLobby(lobby);
         }
+    }
+    private void Hide()
+    {
+        gameObject.SetActive(false);
     }
     private void OnDestroy()
     {

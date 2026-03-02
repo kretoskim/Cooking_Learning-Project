@@ -5,6 +5,12 @@ public class PauseMultiplayerUI : MonoBehaviour
 {
     private void Start()
     {
+        if(!KitchenGameMultiplayer.playMultiplayer)
+        {
+            Hide();
+            return;
+        }
+        
         GameManager.Instance.OnMultiplayerGamePause += GameManager_OnMultiplayerGamePause;
         GameManager.Instance.OnMultiplayerGameUnpaused += GameManager_OnMultiplayerGameUnpause;
         

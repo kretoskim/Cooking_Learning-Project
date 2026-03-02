@@ -83,7 +83,7 @@ MonoBehaviour:
     m_Bits: 64
   collisionLayerMask:
     serializedVersion: 2
-    m_Bits: 576
+    m_Bits: 704
   kitchenObjectHoldPoint: {fileID: 7506162699647892456}
   spawnPositionList:
   - {x: -1.5, y: 0, z: -1}

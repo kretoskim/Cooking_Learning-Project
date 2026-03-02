@@ -72,7 +72,7 @@ public class GameManager : NetworkBehaviour
     {
         autoTestGamePausedState = true;
 
-        // 🔥 CLEAN UP DISCONNECTED PLAYER DATA
+        // CLEAN UP DISCONNECTED PLAYER DATA
         if (playerReadyDictionary.ContainsKey(clientId))
             playerReadyDictionary.Remove(clientId);
 
@@ -219,20 +219,33 @@ public class GameManager : NetworkBehaviour
     {
         isLocalGamePaused = !isLocalGamePaused;
 
+        // Always apply pause locally (works in both modes)
+        Time.timeScale = isLocalGamePaused ? 0f : 1f;
+
+        if(isLocalGamePaused)
+        {
+            OnLocalGamePaused?.Invoke(this, EventArgs.Empty);
+        }
+        else
+        {
+            OnLocalGameUnpaused?.Invoke(this, EventArgs.Empty);
+        }
+
+        // Only sync via RPC + NetworkVariable in multiplayer
         if(KitchenGameMultiplayer.playMultiplayer)
         {
             if(isLocalGamePaused)
             {
                 PauseGamerServerRpc();
-
-                OnLocalGamePaused?.Invoke(this, EventArgs.Empty);
             }
             else
             {
                 UnpauseGamerServerRpc();
-
-                OnLocalGameUnpaused?.Invoke(this, EventArgs.Empty);
             }     
+        }
+        else
+        {
+            isGamePaused.Value = isLocalGamePaused;
         }
         
     }
@@ -259,7 +272,7 @@ public class GameManager : NetworkBehaviour
             isGamePaused.Value = isLocalGamePaused;
             return;
         }
-        
+
         if (NetworkManager.Singleton == null || !NetworkManager.Singleton.IsListening)
         return;
 

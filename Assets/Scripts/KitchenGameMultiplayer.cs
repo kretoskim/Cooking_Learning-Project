@@ -10,6 +10,7 @@ public class KitchenGameMultiplayer : NetworkBehaviour
     public const int MAX_PLAYER_AMOUNT = 4;
     private const string PLAYER_PREFS_PLAYER_NAME_MULTIPLAYER = "PlayerName";
     public static KitchenGameMultiplayer Instance { get; private set; }
+    public static bool playMultiplayer;
     public event EventHandler OnTryingToJoinGame;
     public event EventHandler OnFailedToJoinGame;
     public event EventHandler OnPlayerDataNetworkListChanged;
@@ -27,6 +28,15 @@ public class KitchenGameMultiplayer : NetworkBehaviour
 
         playerDataNetworkList = new NetworkList<PlayerData>();
         playerDataNetworkList.OnListChanged += PlayerDataNetwork_OnListChanged;
+    }
+    private void Start()
+    {
+        if(!playMultiplayer)
+        {
+            //Singleplayer
+            StartHost();
+            Loader.LoadNetwork(Loader.Scene.GameScene);
+        }
     }
     public string GetPlayerName()
     {

@@ -211,26 +211,67 @@ public class KitchenGameLobby : MonoBehaviour
     public async void QuickJoin()
     {
         OnJoinStarted?.Invoke(this, EventArgs.Empty);
+
         try
         {
+            //Perform Quick Join
             joinedLobby = await LobbyService.Instance.QuickJoinLobbyAsync();
+            Debug.Log($"Quick joined lobby: {joinedLobby.Id} - {joinedLobby.Name}");
 
-            string relayJoinCode = joinedLobby.Data[KEY_RELAY_JOIN_CODE].Value;
+            //Immediately refresh the lobby to get latest data (very important!)
+            joinedLobby = await LobbyService.Instance.GetLobbyAsync(joinedLobby.Id);
+            Debug.Log("Lobby refreshed after QuickJoin");
 
+            //Safely extract Relay join code
+            string relayJoinCode = null;
+
+            if (joinedLobby.Data != null && 
+                joinedLobby.Data.TryGetValue(KEY_RELAY_JOIN_CODE, out DataObject dataObj) &&
+                dataObj != null && !string.IsNullOrEmpty(dataObj.Value))
+            {
+                relayJoinCode = dataObj.Value;
+                Debug.Log($"Found Relay join code: {relayJoinCode}");
+            }
+            else
+            {
+                Debug.LogWarning("No Relay join code found in refreshed lobby data!");
+                OnQuickJoinFailed?.Invoke(this, EventArgs.Empty);
+                return;  
+            }
+
+            //Join Relay
             JoinAllocation joinAllocation = await JoinRelay(relayJoinCode);
+            if (joinAllocation == null)
+            {
+                Debug.LogError("JoinRelay returned null");
+                OnQuickJoinFailed?.Invoke(this, EventArgs.Empty);
+                return;
+            }
 
+            //Configure transport
             UnityTransport transport = NetworkManager.Singleton.GetComponent<UnityTransport>();
+            if (transport == null)
+            {
+                Debug.LogError("UnityTransport component missing on NetworkManager!");
+                OnQuickJoinFailed?.Invoke(this, EventArgs.Empty);
+                return;
+            }
 
             transport.SetRelayServerData(new RelayServerData(joinAllocation, "dtls"));
+            Debug.Log("Relay server data set for client");
 
+            //Small safety delay + start client
+            await Task.Yield();  // or await Task.Delay(50); if needed
             KitchenGameMultiplayer.Instance.StartClient();
+            Debug.Log("StartClient() called");
         }
         catch (LobbyServiceException e)
         {
-            Debug.Log(e);
+            Debug.LogError($"LobbyServiceException in QuickJoin: {e}");
             OnQuickJoinFailed?.Invoke(this, EventArgs.Empty);
         }
     }
+
     public async void JoinLobbyId(string lobbyId)
     {
         OnJoinStarted?.Invoke(this, EventArgs.Empty);

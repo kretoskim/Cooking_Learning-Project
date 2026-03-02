@@ -4,6 +4,7 @@ using System;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using Unity.Services.Authentication;
+using Unity.Netcode.Transports.UTP;
 
 public class KitchenGameMultiplayer : NetworkBehaviour
 {
@@ -31,9 +32,14 @@ public class KitchenGameMultiplayer : NetworkBehaviour
     }
     private void Start()
     {
-        if(!playMultiplayer)
+        if(playMultiplayer)
         {
-            //Singleplayer
+            // Multiplayer
+        }
+        else
+        {
+            UnityTransport transport = NetworkManager.Singleton.GetComponent<UnityTransport>();
+            transport.SetConnectionData("127.0.0.1", 7777);
             StartHost();
             Loader.LoadNetwork(Loader.Scene.GameScene);
         }

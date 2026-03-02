@@ -108,7 +108,14 @@ public class GameManager : NetworkBehaviour
             isLocalPlayerReady = true;
             IsLocalPlayerReadyChanged?.Invoke(this, EventArgs.Empty);
 
-            SetPlayerReadyServerRpc();
+            if(KitchenGameMultiplayer.playMultiplayer)
+            {
+                SetPlayerReadyServerRpc();
+            }
+            else
+            {
+                state.Value = State.CountdownToStart;
+            }
 
         }
     }
@@ -211,18 +218,23 @@ public class GameManager : NetworkBehaviour
     public void TogglePauseGame()
     {
         isLocalGamePaused = !isLocalGamePaused;
-        if(isLocalGamePaused)
-        {
-            PauseGamerServerRpc();
 
-            OnLocalGamePaused?.Invoke(this, EventArgs.Empty);
+        if(KitchenGameMultiplayer.playMultiplayer)
+        {
+            if(isLocalGamePaused)
+            {
+                PauseGamerServerRpc();
+
+                OnLocalGamePaused?.Invoke(this, EventArgs.Empty);
+            }
+            else
+            {
+                UnpauseGamerServerRpc();
+
+                OnLocalGameUnpaused?.Invoke(this, EventArgs.Empty);
+            }     
         }
-        else
-        {
-            UnpauseGamerServerRpc();
-
-            OnLocalGameUnpaused?.Invoke(this, EventArgs.Empty);
-        }     
+        
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -242,6 +254,12 @@ public class GameManager : NetworkBehaviour
     }
     private void TestGamePausedState()
     {
+        if(!KitchenGameMultiplayer.playMultiplayer)
+        {
+            isGamePaused.Value = isLocalGamePaused;
+            return;
+        }
+        
         if (NetworkManager.Singleton == null || !NetworkManager.Singleton.IsListening)
         return;
 

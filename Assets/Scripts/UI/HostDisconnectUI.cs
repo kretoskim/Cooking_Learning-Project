@@ -12,7 +12,13 @@ public class HostDisconnectUI : MonoBehaviour
     }
     private void Start()
     {
+        if(!KitchenGameMultiplayer.playMultiplayer)
+        {
+            Hide();
+            return;
+        }
         NetworkManager.Singleton.OnClientDisconnectCallback += NetworkManager_OnClientDisconnectCallback;
+              
         Hide();
     }
 
